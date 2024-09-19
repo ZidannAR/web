@@ -96,8 +96,8 @@
                                  <td><?= $tamu['no_hp'] ?></td>
                                  <td><?= $tamu['bertemu'] ?></td>
                                  <td><?= $tamu['kepentingan'] ?></td>
-                                 <td><button class="btn btn-success" type="button"><a href="edit-tamu.php?id=<?= $tamu['id_tamu']?>">ubah</a></button>
-                                     <button class="btn btn-danger" type="button">hapus</button>
+                                 <td><a class="btn btn-success" href="edit-tamu.php?id=<?= $tamu['id_tamu'] ?>">ubah</a>
+                                     <a onclick="comfirm('apakah anda yakin menghapus data ini?')" class="btn btn-danger" href="hapus_tamu.php?id=<?= $tamu['id_tamu'] ?>" >hapus</a>
                                  </td>
                              </tr>
                          <?php endforeach; ?>
