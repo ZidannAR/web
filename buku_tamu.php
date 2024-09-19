@@ -112,6 +112,7 @@
                                  <th>bertemu dengan</th>
                                  <th>Kepentingan</th>
                                  <th>Aksi</th>
+                                 <th>Aksi</th>
                              </tr>
 
                          </tbody>
