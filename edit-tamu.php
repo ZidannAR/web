@@ -7,7 +7,7 @@ if ($_GET['id']) {
        $id_tamu = $_GET['id'];
 
        // ambil data tamu yang sesuai dengan id
-       $data = query("SELECT * FROM buku_tamu WHERE id_tamu = '$id_user'")[0];
+       $data = query("SELECT * FROM buku_tamu WHERE id_tamu = '$id_tamu'")[0];
 }
 ?>
 
