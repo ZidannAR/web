@@ -180,6 +180,16 @@
     $kodeTamu = $huruf . sprintf("%03s", $urutan);
     ?>
  <!-- Modal -->
+<?php
+$query = mysqli_query($koneksi,"SELECT max(id_tamu) as kodeTerbesar FROM buku_tamu");
+$data = mysqli_fetch_array($query);
+$kodeTamu = $data["kodeTerbesar"];
+
+$urutan = (int) substr($kodeTamu, 2, 3);
+$urutan++;
+$huruf = "zt";
+$kodeTamu = $huruf . sprintf("%3s",$urutan);
+ ?>
  <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
      <div class="modal-dialog">
          <div class="modal-content">
