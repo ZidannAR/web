@@ -96,7 +96,7 @@ if (isset($_POST['simpan'])) {
                                             <td><?= $tamu['no_hp'] ?></td>
                                             <td><?= $tamu['bertemu'] ?></td>
                                             <td><?= $tamu['kepentingan'] ?></td>
-                                            <td><button class="btn btn-success" type="button">ubah</button>
+                                            <td><button class="btn btn-success" type="button"><a href="edit-tamu.php">ubah</a></button>
                                             <button class="btn btn-danger" type="button">hapus</button></td>
                                         </tr>
                                         <?php endforeach; ?>
