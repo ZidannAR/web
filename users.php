@@ -86,24 +86,14 @@
                              <tr>
 
                                  <td><?= $no++; ?></td>
-                                 <td><?= $user['id_user'] ?></td>
                                  <td><?= $user['username'] ?></td>
                                  <td><?= $user['user_role'] ?></td>
-                                 <td><a class="btn btn-success" href="edit-tamu.php?id=<?= $user['id_user'] ?>">ubah</a>
+                                 <td>
+                                   <a class="btn btn-success" href="edit-tamu.php?id=<?= $user['id_user'] ?>">ubah</a>
                                      <a onclick="comfirm('apakah anda yakin menghapus data ini?')" class="btn btn-danger" href="hapus_tamu.php?id=<?= $user['id_user'] ?>" >hapus</a>
                                  </td>
                              </tr>
                          <?php endforeach; ?>
-                         <tbody>
-
-                             <tr>
-                              <th>No</th>
-                                 <th>Username</th>
-                                 <th>role</th>
-                                 <th>Aksi</th>
-                             </tr>
-
-                         </tbody>
                      </table>
                  </div>
              </div>
@@ -157,16 +147,16 @@
  </div>
 
  <?php
-    $query = mysqli_query($koneksi, "SELECT max(id_tamu) as kodeTerbesar FROM users");
+    $query = mysqli_query($koneksi, "SELECT max(id_user) as kodeTerbesar FROM users");
     $data = mysqli_fetch_array($query);
-    $kodeTamu = $data['kodeTerbesar'];
+    $kodeuser = $data['kodeTerbesar'];
 
     $urutan = (int) substr($kodeuser, 3, 2);
 
     $urutan++;
 
     $huruf = "usr";
-    $kodeTamu = $huruf . sprintf("%03s", $urutan);
+    $kodeuser = $huruf . sprintf("%02s", $urutan);
     ?>
  <!-- Modal -->
  <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
@@ -180,12 +170,12 @@
              </div>
              <div class="modal-body">
                  <div class="modal-body">
-                     <form method="post" action="">
+                     <form method="POST" action="">
                          <input type="hidden" name="id_user" id="id_user" value="<?= $kodeuser ?>">
                          <div class="form-group row">
-                             <label for="nama_user" class="col-sm-3 col-form-label">Username</label>
+                             <label for="username" class="col-sm-3 col-form-label">Username</label>
                              <div class="col-sm-8">
-                                 <input type="text" class="form-control" id="nama_user" name="nama_user">
+                                 <input type="text" class="form-control" id="username" name="username">
                              </div>
                          </div>
                          <div class="form-group row">
@@ -203,6 +193,10 @@
                                  </select>
                              </div>
                          </div>  
+                         <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                     <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                 </div>
                  </div>
                  </form>
              </div>
@@ -210,6 +204,7 @@
      </div>
  </div>
  </div>
+
 
  <!-- Bootstrap core JavaScript-->
  <script src="vendor/jquery/jquery.min.js"></script>
