@@ -89,7 +89,7 @@
                                  <td><?= $user['username'] ?></td>
                                  <td><?= $user['user_role'] ?></td>
                                  <td>
-                                   <a class="btn btn-success" href="edit-tamu.php?id=<?= $user['id_user'] ?>">ubah</a>
+                                   <a class="btn btn-success" href="edit-users.php?id=<?= $user['id_user'] ?>">ubah</a>
                                      <a onclick="comfirm('apakah anda yakin menghapus data ini?')" class="btn btn-danger" href="hapus_tamu.php?id=<?= $user['id_user'] ?>" >hapus</a>
                                  </td>
                              </tr>

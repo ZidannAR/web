@@ -30,15 +30,15 @@ function tambah_tamu($data)
 
 function ubah_tamu($data)
 {
-    global $koneksi;
-    $id           = htmlspecialchars($data["id_tamu"]);
-    $nama_tamu    = htmlspecialchars($data["nama_tamu"]);
-    $alamat       = htmlspecialchars($data["alamat"]);
-    $no_hp        = htmlspecialchars($data["no_hp"]);
-    $bertemu      = htmlspecialchars($data["bertemu"]);
-    $kepentingan  = htmlspecialchars($data["kepentingan"]);
+       global $koneksi;
+       $id           = htmlspecialchars($data["id_tamu"]);
+       $nama_tamu    = htmlspecialchars($data["nama_tamu"]);
+       $alamat       = htmlspecialchars($data["alamat"]);
+       $no_hp        = htmlspecialchars($data["no_hp"]);
+       $bertemu      = htmlspecialchars($data["bertemu"]);
+       $kepentingan  = htmlspecialchars($data["kepentingan"]);
 
-    $query = "UPDATE buku_tamu SET
+       $query = "UPDATE buku_tamu SET
         nama_tamu       = '$nama_tamu',
         alamat          = '$alamat',
         no_hp           = '$no_hp',
@@ -47,32 +47,49 @@ function ubah_tamu($data)
         WHERE id_tamu   = '$id'
     ";
 
-    mysqli_query($koneksi, $query);
+       mysqli_query($koneksi, $query);
 
-    return mysqli_affected_rows($koneksi);
+       return mysqli_affected_rows($koneksi);
 }
 
-function hapus($id){
+function hapus($id)
+{
        global $koneksi;
        $query = "DELETE FROM buku_tamu WHERE id_tamu = '$id'";
 
        mysqli_query($koneksi, $query);
        return mysqli_affected_rows($koneksi);
-       
 }
 
-function tambah_user ($data) {
+function tambah_user($data)
+{
        global $koneksi;
 
-$kode = htmlspecialchars($data["id_user"]);
-$username = htmlspecialchars($data["username"]);
-$password = htmlspecialchars($data["password"]);
-$user_role = htmlspecialchars($data["user_role"]);
+       $kode = htmlspecialchars($data["id_user"]);
+       $username = htmlspecialchars($data["username"]);
+       $password = htmlspecialchars($data["password"]);
+       $user_role = htmlspecialchars($data["user_role"]);
 
-$password_hash = password_hash ($password, PASSWORD_DEFAULT);
-$query = "INSERT INTO users (id_user, username, password, user_role) VALUES ('$kode', '$username', '$password_hash', '$user_role')";
+       $password_hash = password_hash($password, PASSWORD_DEFAULT);
+       $query = "INSERT INTO users (id_user, username, password, user_role) VALUES ('$kode', '$username', '$password_hash', '$user_role')";
 
 
-mysqli_query($koneksi, $query);
-return mysqli_affected_rows($koneksi);
+       mysqli_query($koneksi, $query);
+       return mysqli_affected_rows($koneksi);
+}
+
+function ubah_user($data)
+{
+       global $koneksi;
+       $kode = htmlspecialchars($data["id_user"]);
+       $username = htmlspecialchars($data["username"]);
+       $user_role = htmlspecialchars($data["user_role"]);
+
+       $query = "UPDATE users SET
+              username = '$username',
+              user_role = '$user_role'
+              WHERE id_user = '$kode'";
+
+              mysqli_query($koneksi, $query);
+              return mysqli_affected_rows($koneksi);
 }
