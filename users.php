@@ -10,7 +10,7 @@
 
      <?php
         if (isset($_POST['simpan'])) {
-            if (tambah_tamu($_POST) > 0) {
+            if (tambah_user($_POST) > 0) {
 
         ?>
              <div class="alert alert-success" role="alert">
@@ -157,28 +157,18 @@
  </div>
 
  <?php
-    $query = mysqli_query($koneksi, "SELECT max(id_tamu) as kodeTerbesar FROM buku_tamu");
+    $query = mysqli_query($koneksi, "SELECT max(id_tamu) as kodeTerbesar FROM users");
     $data = mysqli_fetch_array($query);
     $kodeTamu = $data['kodeTerbesar'];
 
-    $urutan = (int) substr($kodeTamu, 2, 3);
+    $urutan = (int) substr($kodeuser, 3, 2);
 
     $urutan++;
 
-    $huruf = "zt";
+    $huruf = "usr";
     $kodeTamu = $huruf . sprintf("%03s", $urutan);
     ?>
  <!-- Modal -->
-<?php
-$query = mysqli_query($koneksi,"SELECT max(id_tamu) as kodeTerbesar FROM buku_tamu");
-$data = mysqli_fetch_array($query);
-$kodeTamu = $data["kodeTerbesar"];
-
-$urutan = (int) substr($kodeTamu, 2, 3);
-$urutan++;
-$huruf = "zt";
-$kodeTamu = $huruf . sprintf("%3s",$urutan);
- ?>
  <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="tambahModalLabel" aria-hidden="true">
      <div class="modal-dialog">
          <div class="modal-content">
@@ -191,41 +181,28 @@ $kodeTamu = $huruf . sprintf("%3s",$urutan);
              <div class="modal-body">
                  <div class="modal-body">
                      <form method="post" action="">
-                         <input type="hidden" name="id_tamu" id="id_tamu" value="<?= $kodeTamu ?>">
+                         <input type="hidden" name="id_user" id="id_user" value="<?= $kodeuser ?>">
                          <div class="form-group row">
-                             <label for="nama_tamu" class="col-sm-3 col-form-label">Nama Tamu</label>
+                             <label for="nama_user" class="col-sm-3 col-form-label">Username</label>
                              <div class="col-sm-8">
-                                 <input type="text" class="form-control" id="nama_tamu" name="nama_tamu">
+                                 <input type="text" class="form-control" id="nama_user" name="nama_user">
                              </div>
                          </div>
                          <div class="form-group row">
-                             <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+                             <label for="password" class="col-sm-3 col-form-label">Password</label>
                              <div class="col-sm-8">
-                                 <textarea class="form-control" id="alamat" name="alamat"></textarea>
+                                 <input type="password" class="form-control" id="password" name="password"></input>
                              </div>
                          </div>
                          <div class="form-group row">
-                             <label for="no_hp" class="col-sm-3 col-form-label">No. Telepon</label>
+                             <label for="user_role" class="col-sm-3 col-form-label">User Role</label>
                              <div class="col-sm-8">
-                                 <input type="text" class="form-control" id="no_hp" name="no_hp">
+                                 <select type="text" class="form-control" id="user_role" name="user_role">
+                                   <option value="admin">Admin</option>
+                                   <option value="operator">Operator</option>
+                                 </select>
                              </div>
-                         </div>
-                         <div class="form-group row">
-                             <label for="bertemu" class="col-sm-3 col-form-label">Bertemu dg. </label>
-                             <div class="col-sm-8">
-                                 <input type="text" class="form-control" id="bertemu" name="bertemu">
-                             </div>
-                         </div>
-                         <div class="form-group row">
-                             <label for="kepentingan" class="col-sm-3 col-form-label">Kepentingan</label>
-                             <div class="col-sm-8">
-                                 <input type="text" class="form-control" id="kepentingan" name="kepentingan">
-                             </div>
-                         </div>
-                 </div>
-                 <div class="modal-footer">
-                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-                     <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                         </div>  
                  </div>
                  </form>
              </div>
