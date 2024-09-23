@@ -26,7 +26,23 @@
             }
         }
         ?>
-
+     <?php
+        if (isset($_POST['ganti_password'])) {
+            if (ganti_password($_POST) > 0) {
+        ?>
+             <div class="alert alert-success" role="alert">
+                 password berhasil diubah
+             </div>
+         <?php
+            } else {
+            ?>
+             <div class="alert alert-danger" role="alert">
+                 password gagal diubah
+             </div>
+     <?php
+            }
+        }
+        ?>
      <!DOCTYPE html>
      <html lang="en">
 
@@ -89,8 +105,11 @@
                                  <td><?= $user['username'] ?></td>
                                  <td><?= $user['user_role'] ?></td>
                                  <td>
-                                   <a class="btn btn-success" href="edit-users.php?id=<?= $user['id_user'] ?>">ubah</a>
-                                     <a onclick="comfirm('apakah anda yakin menghapus data ini?')" class="btn btn-danger" href="hapus_tamu.php?id=<?= $user['id_user'] ?>" >hapus</a>
+                                     <button type="button" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#gantiPassword" data-id="<?= $user['id_user'] ?>">
+                                         <span class="text">Ganti Password</span>
+                                     </button>
+                                     <a class="btn btn-success" href="edit-users.php?id=<?= $user['id_user'] ?>">ubah</a>
+                                     <a onclick="comfirm('apakah anda yakin menghapus data ini?')" class="btn btn-danger" href="hapus_tamu.php?id=<?= $user['id_user'] ?>">hapus</a>
                                  </td>
                              </tr>
                          <?php endforeach; ?>
@@ -104,6 +123,36 @@
 
  </div>
  <!-- End of Main Content -->
+
+ <!-- modal ganti password -->
+ <div class="modal fade" id="gantiPassword" tabindex="-1" aria-labelledby="gantiPasswordLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h5 class="modal-title" id="gantiPasswordLabel">Ganti Password</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+             <div class="modal-body">
+                 <form method="post" action="">
+                     <input type="hidden" name="id_user" id="id_user">
+                     <div class="form-group row">
+                         <label for="password" class="col-sm-4 col-form-label">Password Baru</label>
+                         <div class="col-sm-7">
+                             <input type="password" class="form-control" id="password" name="password">
+                         </div>
+                     </div>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                 <button type="submit" name="ganti_password" class="btn btn-primary">Simpan</button>
+
+             </div>
+             </form>
+         </div>
+     </div>
+ </div>
 
  <!-- Footer -->
  <footer class="sticky-footer bg-white">
@@ -188,15 +237,15 @@
                              <label for="user_role" class="col-sm-3 col-form-label">User Role</label>
                              <div class="col-sm-8">
                                  <select type="text" class="form-control" id="user_role" name="user_role">
-                                   <option value="admin">Admin</option>
-                                   <option value="operator">Operator</option>
+                                     <option value="admin">Admin</option>
+                                     <option value="operator">Operator</option>
                                  </select>
                              </div>
-                         </div>  
+                         </div>
                          <div class="modal-footer">
-                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-                     <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
-                 </div>
+                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+                             <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                         </div>
                  </div>
                  </form>
              </div>
