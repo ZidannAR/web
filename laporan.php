@@ -4,7 +4,7 @@
 <div class="container-fluid">
 
        <!-- Page Heading -->
-       <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+       <h1 class="h3 mb-4 text-gray-800">Laporan tamu</h1>
        <div class="row mx-auto d-flex justify-content-center">
               <div class="col-xl-5 col-md-6 mb-4">
                      <div class="card border-left-primary shadow h-100 py-2">
