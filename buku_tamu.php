@@ -26,6 +26,12 @@
             }
         }
         ?>
+        <?php if (isset($_SESSION['role']) && $_SESSION ['role'] != 'operator'){
+        
+        echo "<script>alert('Anda Tidak Memiliki Akses')</script>";
+        echo "<script>window.location.href='index.php'</script>";
+    }
+      ?>
 
      <!DOCTYPE html>
      <html lang="en">

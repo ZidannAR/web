@@ -43,6 +43,14 @@
             }
         }
         ?>
+     <?php if (isset($_SESSION['role']) && $_SESSION ['role'] != 'admin'){
+        
+        echo "<script>alert('Anda Tidak Memiliki Akses')</script>";
+        echo "<script>window.location.href='index.php'</script>";
+    }
+      ?>
+  
+                 
      <!DOCTYPE html>
      <html lang="en">
 
