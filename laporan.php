@@ -79,7 +79,7 @@
               $no = 1;
 
               $no++;
-              $buku_tamu = query("SELECT* FROM buku_tamu WHERE tanggal BETWEEN '$p_awal' AND '$p_akhir'");
+              $buku_tamu = query("SELECT * FROM buku_tamu WHERE tanggal BETWEEN '$p_awal' AND '$p_akhir'");
               foreach ($buku_tamu as $tamu) : ?>
                      <tr>
                             <td><?= $no++; ?></td>
@@ -90,7 +90,7 @@
                             <td><?= $tamu['bertemu'] ?></td>
                             <td><?= $tamu['kepentingan'] ?></td>
                             <td><a class="btn btn-success" href="edit-tamu.php?id=<?= $tamu['id_tamu'] ?>">ubah</a>
-                                   <a onclick="comfirm('apakah anda yakin menghapus data ini?')" class="btn btn-danger" href="hapus_tamu.php?id=<?= $tamu['id_tamu'] ?>">hapus</a>
+                                   <a onclick=" confirm ('apakah anda yakin menghapus data ini?')" class="btn btn-danger" href="hapus_tamu.php?id=<?= $tamu['id_tamu'] ?>">hapus</a>
                             </td>
                      </tr>
        <?php endforeach;

@@ -1,8 +1,15 @@
 <?php 
+<<<<<<< HEAD
 session_start();
 if (isset($_SESSION['login'])) {
     header('Location: index.php');
 } 
+=======
+// session_start();
+// if (isset($_SESSION['login'])) {
+    // header('Location: index.php');
+// } 
+>>>>>>> 55ffaf48777c2b2c2cfea95dc454256240a56886
 
 require 'database.php';
 if (isset($_POST['login'])) {
@@ -16,7 +23,10 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $row['password'])) {
             $_SESSION['login'] = true;
             $_SESSION['username'] = $username;
+<<<<<<< HEAD
             $_SESSION['role'] = $row['user_role'];
+=======
+>>>>>>> 55ffaf48777c2b2c2cfea95dc454256240a56886
             // login berhasil 
             header("Location: index.php");
             exit;
