@@ -1,3 +1,8 @@
+<?php 
+session_start();
+if(isset($_SESSION['login'])){
+    header('location: index.php');
+} ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,8 +46,15 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
+            <?php if(isset($_SESSION['login'])): ?>
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php">
+                    <i class="fas fa-fw fa-power-off"></i>
+                <span>logout</span></a>
+            </li>
 
             <!-- Nav Item - Dashboard -->
+            <?php endif; ?>
             <li class="nav-item">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>

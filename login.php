@@ -1,20 +1,27 @@
-<?php
+<?php 
+session_start();
+if (isset($_SESSION['login'])) {
+    header('Location: index.php');
+} 
+
 require 'database.php';
 if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $result = mysqli_query($koneksi, "SELECT * FROM users WHERE username = '$username'");
     // cek apakah ada username 
-    if(mysqli_num_rows($result) === 1) {
-    // cek apakah passwordnya benar 
-    $row = mysqli_fetch_assoc($result);
-    if (password_verify($password, $row['password'])) {
-        // login berhasil 
-        header("Location: index.php"); 
-        exit;
+    if (mysqli_num_rows($result) === 1) {
+        // cek apakah passwordnya benar 
+        $row = mysqli_fetch_assoc($result);
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['login'] = true;
+            $_SESSION['username'] = $username;
+            // login berhasil 
+            header("Location: index.php");
+            exit;
+        }
     }
-}
-$error = true;
+    $error = true;
 }
 ?>
 <!DOCTYPE html>
@@ -44,11 +51,11 @@ $error = true;
 
     <div class="container">
         <?php
-        
-        if (isset($error)) :?>
-        <div class="alert alert-danger mt-3 " role="alert">
-            username dan pw salah
-        </div>
+
+        if (isset($error)) : ?>
+            <div class="alert alert-danger mt-3 " role="alert">
+                username dan pw salah
+            </div>
         <?php
         endif;
         ?>

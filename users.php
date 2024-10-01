@@ -109,7 +109,7 @@
                                          <span class="text">Ganti Password</span>
                                      </button>
                                      <a class="btn btn-success" href="edit-users.php?id=<?= $user['id_user'] ?>">ubah</a>
-                                     <a onclick="comfirm('apakah anda yakin menghapus data ini?')" class="btn btn-danger" href="hapus_tamu.php?id=<?= $user['id_user'] ?>">hapus</a>
+                                     <a onclick="confirm('apakah anda yakin menghapus data ini?')" class="btn btn-danger" href="hapus_tamu.php?id=<?= $user['id_user'] ?>">hapus</a>
                                  </td>
                              </tr>
                          <?php endforeach; ?>
