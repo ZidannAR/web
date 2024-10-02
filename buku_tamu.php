@@ -14,7 +14,7 @@
 
         ?>
              <div class="alert alert-success" role="alert">
-                 data berhasil disimpan! asiik
+                 data berhasil disimpan! 
              </div>
          <?php
             } else {
