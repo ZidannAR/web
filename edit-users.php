@@ -24,13 +24,13 @@ if ($_GET['id']) {
 
        ?>
                      <div class="alert alert-success" role="alert">
-                            Data berhasil diubah
+                            Data berhasil diubah!
                      </div>
               <?php
               } else {
               ?>
                      <div class="alert alert-danger" role="alert">
-                            data gagal diubah
+                            data gagal diubah!
                      </div>
        <?php
               }
