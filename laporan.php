@@ -35,6 +35,11 @@
         <div class="card-header py-3">
             <span class="text">Tabel Histori Tamu</span>
         </div>
+        <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                     <a href="<?= isset($_POST['tampilakan']) ? $link : 'export-laporan.php'  ?>"></a>
+              </div>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -81,3 +86,4 @@
     </div>
 </div>
 <?php include_once('templates/footer.php'); ?>
+
