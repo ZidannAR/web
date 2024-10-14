@@ -75,6 +75,13 @@ if ($_GET['id']) {
                                    </div>
                             </div>
                             <div class="form-group row">
+                                   <label for="kepentingan" class="col-sm-3 col-form-label">Gambar</label>
+                                   <div class="col-sm-8">
+                                          <img src="assets/gambar/<?= $data['gambar'] ?>" alt="">
+                                          <input type="file" class="form-control" id="gambar" name="gambar" value="<?= $data['gambar'] ?>">
+                                   </div>
+                            </div>
+                            <div class="form-group row">
                                    <label for="" class="col-sm-3 col-form-label"></label>
                                    <div class="col-sm-8 d-flex justify-content-end">
                                           <div>

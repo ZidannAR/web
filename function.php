@@ -28,8 +28,8 @@ function tambah_tamu($data)
               return false; 
        }
        
-       $query = "INSERT INTO buku_tamu VALUES ('$kode', '$tanggal','$nama_tamu','$alamat','$no_hp','$bertemu','$kepentingan')";
-       mysqli_query($koneksi, $query);
+       $query = "INSERT INTO buku_tamu VALUES ('$kode', '$tanggal','$nama_tamu','$alamat','$no_hp','$bertemu','$kepentingan','$gambar')";
+       mysqli_query($koneksi , $query);
        return mysqli_affected_rows($koneksi);
 
 
