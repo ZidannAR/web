@@ -22,10 +22,18 @@ function tambah_tamu($data)
        $no_hp = htmlspecialchars($data['no_hp']);
        $bertemu = htmlspecialchars($data['bertemu']);
        $kepentingan = htmlspecialchars($data['kepentingan']);
+       $gambar = uploadGambar();
 
+       if (!$gambar){
+              return false; 
+       }
+       
        $query = "INSERT INTO buku_tamu VALUES ('$kode', '$tanggal','$nama_tamu','$alamat','$no_hp','$bertemu','$kepentingan')";
        mysqli_query($koneksi, $query);
        return mysqli_affected_rows($koneksi);
+
+
+
 }
 
 function ubah_tamu($data)
@@ -115,4 +123,41 @@ function ganti_password($data)
                  WHERE id_user = '$kode'";
        mysqli_query($koneksi, $query);
        return mysqli_affected_rows($koneksi);
+}
+
+function uploadGambar()
+{
+
+       $namafile = $_FILES['gambar']['name'];
+       $ukuranfile = $_FILES['gambar']['size'];
+       $error = $_FILES['gambar']['error'];
+       $tmpName = $_FILES['gambar']['tmp_name'];
+
+       if ($error === 4) {
+              echo "<script> alert('pilih gambar terlebih dahulu')</script>";
+              return false;
+       }
+
+       $ekstensiGambarValid = ['jpg','jpeg','gif','png'];
+       $ekstensiGambar = explode('.',$namafile);
+       $ekstensiGambar = strtolower(end($ekstensiGambar));
+
+       if (!in_array($ekstensiGambar,$ekstensiGambarValid)) {
+              echo "<script>alert('file yang di upload harus gambar');</script>";
+              return false;
+       }
+
+       if ($ukuranfile > 1000000){
+              echo "<script> alert('Ukuran gambar terlalu besar');</script>";
+              return false;
+       }
+
+       $namaFileBaru = uniqid();
+       $namaFileBaru .= '.';
+       $namaFileBaru .= $ekstensiGambar;
+
+       move_uploaded_file($tmpName,'assets/gambar/'. $namaFileBaru);
+
+       return $namaFileBaru;
+
 }
