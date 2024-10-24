@@ -90,8 +90,8 @@
                          </thead>
                          <?php
                             $no = 1;
-                            $buku_tamu = query("SELECT * FROM  buku_tamu");
-                            foreach ($buku_tamu as $tamu) :
+                            $buku = query("SELECT * FROM  buku_tamu");
+                            foreach ($buku as $tamu) :
                             ?>
                              <tr>
 
